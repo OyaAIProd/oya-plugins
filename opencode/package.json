@@ -1,0 +1,30 @@
+{
+  "name": "@oya-ai/opencode-plugin",
+  "version": "0.1.0",
+  "description": "Oya plugin for OpenCode - manage Oya agents and skills from your editor.",
+  "type": "module",
+  "main": "src/plugin.ts",
+  "exports": {
+    ".": "./src/plugin.ts"
+  },
+  "files": [
+    "src",
+    "README.md"
+  ],
+  "keywords": ["opencode", "opencode-plugin", "oya", "mcp", "ai-agents"],
+  "homepage": "https://oya.ai",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OyaAIProd/oya-plugins.git",
+    "directory": "opencode"
+  },
+  "bugs": { "url": "https://github.com/OyaAIProd/oya-plugins/issues" },
+  "author": "Oya <founders@oya.ai>",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "@opencode-ai/plugin": "*"
+  }
+}

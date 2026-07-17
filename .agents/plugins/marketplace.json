@@ -1,0 +1,12 @@
+{
+  "name": "oya-plugins",
+  "interface": { "displayName": "Oya Plugins" },
+  "plugins": [
+    {
+      "name": "oya",
+      "source": { "source": "local", "path": "./codex" },
+      "description": "Build, deploy, and manage Oya agents and skills from Codex.",
+      "policy": { "installation": "AVAILABLE" }
+    }
+  ]
+}

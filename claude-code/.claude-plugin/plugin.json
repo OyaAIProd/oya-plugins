@@ -1,0 +1,12 @@
+{
+  "name": "oya",
+  "displayName": "Oya Agent Platform",
+  "version": "0.1.0",
+  "description": "Build, deploy, and manage Oya agents and skills from your editor via the Oya MCP server.",
+  "author": {
+    "name": "Oya",
+    "email": "founders@oya.ai"
+  },
+  "homepage": "https://oya.ai",
+  "mcpServers": "./.mcp.json"
+}

@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "oya": {
+      "type": "http",
+      "url": "https://oya.ai/api/mcp",
+      "headers": {
+        "Authorization": "Bearer ${OYA_API_KEY}"
+      }
+    }
+  }
+}

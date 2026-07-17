@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "oya": {
+      "url": "https://oya.ai/api/mcp",
+      "bearer_token_env_var": "OYA_API_KEY"
+    }
+  }
+}

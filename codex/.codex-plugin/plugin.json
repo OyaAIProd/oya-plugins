@@ -1,0 +1,9 @@
+{
+  "name": "oya",
+  "version": "0.1.0",
+  "description": "Build, deploy, and manage Oya agents and skills from Codex. Bundles the Oya MCP connector and a skill that teaches Codex how to use it.",
+  "author": "Oya <founders@oya.ai>",
+  "homepage": "https://oya.ai",
+  "skills": "./skills",
+  "mcp": "./mcp.json"
+}

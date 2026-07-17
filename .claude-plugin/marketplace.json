@@ -1,0 +1,15 @@
+{
+  "name": "oya-plugins",
+  "owner": {
+    "name": "Oya",
+    "email": "founders@oya.ai"
+  },
+  "plugins": [
+    {
+      "name": "oya",
+      "source": "./claude-code",
+      "description": "Build, deploy, and manage Oya agents and skills from Claude Code via the Oya MCP server.",
+      "version": "0.1.0"
+    }
+  ]
+}
