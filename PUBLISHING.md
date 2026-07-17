@@ -7,7 +7,7 @@ Three plugins, two distribution channels:
 - **OpenCode** installs from **npm** — publish = `npm publish` the `opencode/` package
   (or push a `plugins-v*` tag to run `.github/workflows/release-oya-plugins.yaml`).
 
-> Names below use the placeholders `OyaAIProd/oya-plugins` (git repo) and `@oya-ai` (npm scope).
+> Names below use the placeholders `OyaAIProd/oya-plugins` (git repo) and `@oyadotai` (npm scope).
 > Replace them with the real ones you own before publishing. This monorepo's GitHub org is
 > `A2ABaseAI`; the marketplace repo must be **public** (Claude Code / Codex clone it).
 
@@ -48,27 +48,27 @@ git push origin plugins-vX.Y.Z   # runs release-oya-plugins.yaml -> npm publish
 ```
 
 Requires a repo secret `NPM_TOKEN` (an npm automation token with publish rights to the
-`@oya-ai` scope).
+`@oyadotai` scope).
 
 Option B — manual:
 
 ```bash
 cd plugins/opencode
-npm login                 # once, as a user with @oya-ai publish rights
+npm login                 # once, as a user with @oyadotai publish rights
 npm publish --access public
 ```
 
 Users then install by adding it to `opencode.json`:
 
 ```json
-{ "plugin": ["@oya-ai/opencode-plugin"] }
+{ "plugin": ["@oyadotai/opencode-plugin"] }
 ```
 
 ## Pre-publish checklist
 
 - [ ] Real git repo slug + npm scope substituted everywhere (this file, the plugin READMEs,
       `plugins/opencode/package.json` `repository`/`bugs`, and `frontend/src/app/oya/page.tsx`).
-- [ ] `@oya-ai` npm org exists and you can publish to it.
+- [ ] `@oyadotai` npm org exists and you can publish to it.
 - [ ] Marketplace repo is **public**.
 - [ ] `cd plugins/opencode && npm publish --dry-run` looks right.
 - [ ] Verified end to end in each tool (the Codex `mcp.json` connector shape and the OpenCode

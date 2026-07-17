@@ -1,5 +1,5 @@
 {
-  "name": "@oya-ai/opencode-plugin",
+  "name": "@oyadotai/opencode-plugin",
   "version": "0.1.0",
   "description": "Oya plugin for OpenCode - manage Oya agents and skills from your editor.",
   "type": "module",

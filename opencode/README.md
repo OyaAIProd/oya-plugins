@@ -6,7 +6,7 @@ native OpenCode tools, proxying to the Oya MCP server. No manual MCP config.
 
 ```
 opencode/
-├── package.json          # @oya-ai/opencode-plugin
+├── package.json          # @oyadotai/opencode-plugin
 └── src/plugin.ts         # registers the Oya tools
 ```
 
@@ -22,7 +22,7 @@ Add the plugin to your OpenCode config (`~/.config/opencode/opencode.json` or a 
 ```json
 {
   "$schema": "https://opencode.ai/config.json",
-  "plugin": ["@oya-ai/opencode-plugin"]
+  "plugin": ["@oyadotai/opencode-plugin"]
 }
 ```
 
