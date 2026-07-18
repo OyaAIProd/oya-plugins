@@ -48,3 +48,11 @@ plugins cover create / configure / deploy / run.)
 ## Endpoints
 
 - Prod: `https://oya.ai/api/mcp` · Dev: `https://dev.oya.ai/api/mcp` · Local: `http://localhost:8000/api/mcp`
+
+## Authentication
+
+The CLIs and the three editor plugins above authenticate with an Oya API key sent as
+`Authorization: Bearer $OYA_API_KEY`. The **claude.ai custom connector** instead signs in via
+browser OAuth (the MCP server is an OAuth 2.1 resource server that bridges to your Oya/Supabase
+login) — add `https://oya.ai/api/mcp` as a custom connector and complete the sign-in; no API key
+is entered there.
