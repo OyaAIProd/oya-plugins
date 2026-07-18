@@ -1,8 +1,14 @@
 # Oya plugin for OpenCode
 
-An OpenCode **plugin** (`@opencode-ai/plugin`) that registers Oya tools (`oya_skills_list`,
-`oya_skill_create`, `oya_agents_list`, `oya_agent_deploy`, `oya_agent_run`, `oya_call`, ...) as
-native OpenCode tools, proxying to the Oya MCP server. No manual MCP config.
+An OpenCode **plugin** (`@opencode-ai/plugin`) that registers Oya tools as native OpenCode
+tools, proxying to the Oya MCP server. No manual MCP config. Covers the agent + skill
+lifecycle: `oya_agents_list`, `oya_agent_get`, `oya_agent_create`, `oya_agent_get_soul`,
+`oya_agent_set_soul`, `oya_agent_deploy`, `oya_agent_run`, `oya_agent_skills_list`,
+`oya_agent_add_skill`, `oya_agent_remove_skill`, `oya_agent_sync_skills`, `oya_skills_list`,
+`oya_skill_get`, `oya_skill_create`, `oya_skill_update`, `oya_templates_list`,
+`oya_template_deploy`, `oya_kb_upload`, `oya_kb_assign_entry`, `oya_routines_list`,
+`oya_routine_create`, `oya_routine_trigger`, `oya_gateways_list`, and `oya_call` (escape hatch
+for any other MCP tool).
 
 ```
 opencode/
