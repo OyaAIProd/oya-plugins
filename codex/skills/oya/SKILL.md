@@ -41,6 +41,14 @@ domain code (`not_found`, `forbidden`, ...) — surface it and stop rather than 
 - **Accounts (agency)** — `accounts.whoami`, `accounts.list` (customer sub-accounts),
   `accounts.create`, `accounts.delete`
 - **Projects / organizations / api_keys** — `*.list` / `*.create` / `*.get` and related.
+- **Full facade coverage** — beyond the curated tools above, the whole SDK surface is exposed
+  as `<namespace>.<method>` tools: `organizations.*` (members/teams/invitations/grants),
+  `accounts.*` (agency customers/invitations/dashboards), `evals.*`, `mcp_connections.*`,
+  `agent_transfers.*`, `support.submit_contact`, and the rest of `agents.*` (memories, scratchpad,
+  monitoring, restore, transfer, move-to-org). Call `tools/list` to see them all.
+- **Gateway management** — `gateways.platforms`, `gateways.create` / `update` / `delete`,
+  `gateways.channels`, `gateways.test`, `gateways.logs`, `gateways.disconnect_connection`, and
+  `gateways.connect_token` (connect sentry/posthog/kubernetes/browser/attio with an API token).
 
 ## Common flows
 
