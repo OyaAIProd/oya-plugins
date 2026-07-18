@@ -33,8 +33,14 @@ Follow the README in the matching folder above.
 ## Tools your agent gets
 
 - **skills** — list, get, create, update, delete
-- **agents** — list, get, create, list/add/remove skills, update script, deploy, deploy_script, run_script
-- **projects**, **knowledge_base**, **routines**, **triggers**, **organizations**, **api_keys** — list/create and related
+- **agents** — list, get, create, update, soul, list/add/update/remove/sync skills, update script,
+  update/delete secrets, deploy, deploy_script, run_script
+- **agent debugging** — get_runs, get_run, list_threads, get_thread, get_trace
+- **agent portability** — export (OyaAgentSpec), fork
+- **templates** — list, get, deploy, apply, create, update, fork, delete
+- **routines** — list, create, update, trigger, delete
+- **accounts** (agency) — whoami, list/create/delete customer sub-accounts
+- **projects**, **knowledge_base**, **triggers**, **organizations**, **api_keys** — list/create and related
 
 (The interactive agent *build* flow - the Oya Engineer - stays in the Oya web app; these
 plugins cover create / configure / deploy / run.)

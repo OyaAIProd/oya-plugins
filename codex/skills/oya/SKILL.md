@@ -14,21 +14,31 @@ domain code (`not_found`, `forbidden`, ...) — surface it and stop rather than 
 
 ## Available tools (call them directly)
 
-- **Agents** — `agents.list`, `agents.get`, `agents.create`, `agents.get_soul`,
-  `agents.set_soul`, `agents.update_script`, `agents.deploy`, `agents.deploy_script`,
-  `agents.run_script`
-- **Agent skills** — `agents.list_skills`, `agents.add_skill`, `agents.remove_skill`,
-  `agents.sync_skills` (declare the whole set in one call)
+- **Agents** — `agents.list`, `agents.get`, `agents.create`, `agents.update`, `agents.get_soul`,
+  `agents.set_soul`, `agents.update_script`, `agents.update_secrets`, `agents.delete_secret`,
+  `agents.deploy`, `agents.deploy_script`, `agents.run_script`
+- **Agent observability (debug)** — `agents.get_runs` (recent runs), `agents.get_run` (one run's
+  full payload + result by job_id), `agents.list_threads`, `agents.get_thread` (messages),
+  `agents.get_trace` (LLM trace)
+- **Agent portability** — `agents.export` (portable OyaAgentSpec v1), `agents.fork` (create an
+  agent from a spec)
+- **Agent skills** — `agents.list_skills`, `agents.add_skill`, `agents.update_skill`,
+  `agents.remove_skill`, `agents.sync_skills` (declare the whole set in one call)
 - **Skills catalog** — `skills.list`, `skills.get`, `skills.create`, `skills.update`,
   `skills.delete`
 - **Templates** — `templates.list`, `templates.get`, `templates.deploy` (quickstart a complete
-  agent from a curated template)
-- **Routines** — `routines.list`, `routines.create`, `routines.trigger`
+  agent from a curated template), `templates.apply` (replay onto an existing agent),
+  `templates.create`, `templates.update`, `templates.fork`, `templates.delete`
+- **Routines** — `routines.list`, `routines.create`, `routines.update`, `routines.trigger`,
+  `routines.delete`
 - **Triggers** — `triggers.list`, `triggers.create_webhook`
 - **Knowledge base** — `knowledge_base.list_folders`, `knowledge_base.create_folder`,
-  `knowledge_base.upload`, `knowledge_base.assign_entry`, `knowledge_base.list_entries`,
-  `knowledge_base.list_agent_knowledge`
+  `knowledge_base.upload`, `knowledge_base.assign_entry`, `knowledge_base.unassign_entry`,
+  `knowledge_base.list_entries`, `knowledge_base.list_agent_knowledge`,
+  `knowledge_base.delete_entry`
 - **Gateways (read)** — `gateways.list`, `gateways.list_connections`
+- **Accounts (agency)** — `accounts.whoami`, `accounts.list` (customer sub-accounts),
+  `accounts.create`, `accounts.delete`
 - **Projects / organizations / api_keys** — `*.list` / `*.create` / `*.get` and related.
 
 ## Common flows
@@ -51,9 +61,13 @@ domain code (`not_found`, `forbidden`, ...) — surface it and stop rather than 
    `agents.deploy`). Smoke-test with `agents.run_script` and print `https://oya.ai/chat/<id>`.
 
 **Debug / edit an existing agent.** `agents.get` + `agents.get_soul` + `agents.list_skills` +
-`routines.list` + `gateways.list` to inspect; `agents.run_script` to reproduce the failure; fix
-the root cause (`agents.set_soul` for behavior, `agents.add_skill` / `agents.remove_skill` /
-`agents.sync_skills` for tools, `agents.update_script` for code); redeploy and re-run to confirm.
+`routines.list` + `gateways.list` to inspect. For a run that already failed, read the actual
+output before guessing: `agents.get_runs` to find the failing `job_id` → `agents.get_run` for its
+full payload + result; or `agents.list_threads` → `agents.get_thread` for the conversation, and
+`agents.get_trace` for the LLM trace. Reproduce with `agents.run_script`; fix the root cause
+(`agents.set_soul` for behavior, `agents.add_skill` / `agents.update_skill` / `agents.remove_skill`
+/ `agents.sync_skills` for tools, `agents.update_script` + `agents.update_secrets` for code/env);
+redeploy and re-run to confirm.
 
 **Create a skill.** Draft a `SKILL.md` (YAML frontmatter: `name` kebab-case, `description`,
 `category`, a `tool_schema`) plus a self-contained `script.py`, show the user, then call

@@ -4,8 +4,10 @@ description: Diagnose a failing Oya agent or make a targeted edit to an existing
 
 You have the Oya MCP server connected (tools include `agents.list`, `agents.get`,
 `agents.get_soul`, `agents.set_soul`, `agents.list_skills`, `agents.add_skill`,
-`agents.remove_skill`, `agents.sync_skills`, `agents.update_script`, `agents.deploy_script`,
-`agents.deploy`, `agents.run_script`, `routines.list`, `routines.trigger`, `gateways.list`,
+`agents.update_skill`, `agents.remove_skill`, `agents.sync_skills`, `agents.update_script`,
+`agents.update_secrets`, `agents.deploy_script`, `agents.deploy`, `agents.run_script`,
+`agents.get_runs`, `agents.get_run`, `agents.list_threads`, `agents.get_thread`,
+`agents.get_trace`, `routines.list`, `routines.update`, `routines.trigger`, `gateways.list`,
 `skills.list`, `skills.get`).
 
 The user wants to debug or edit an agent: **$ARGUMENTS**
@@ -25,9 +27,12 @@ same surface.
 4. `routines.list` — if the complaint is about a scheduled run, confirm the routine exists and
    its prompt/schedule are right. `gateways.list` — if it "can't reach Slack/Gmail", check the
    platform is actually connected.
-4. **Reproduce.** Call `agents.run_script` with a `user_message` that recreates the failure,
-   then read the run result. Form one hypothesis from the actual output — don't guess from the
-   description alone.
+4. **Read the real failure.** If a run already failed, don't guess — read it. `agents.get_runs`
+   lists recent runs (find the failing `job_id`); `agents.get_run` returns that run's full payload
+   + result. For a chat complaint, `agents.list_threads` → `agents.get_thread` shows the whole
+   conversation (including tool calls), and `agents.get_trace` fetches the LLM trace behind a
+   message. Otherwise **reproduce**: call `agents.run_script` with a `user_message` that recreates
+   the failure. Form one hypothesis from the actual output.
 5. **Fix** the root cause (see below), redeploy, and re-run to confirm the failure is gone.
 
 **Edit (swap a skill, tweak rules, change behavior)**
