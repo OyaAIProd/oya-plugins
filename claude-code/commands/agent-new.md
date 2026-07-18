@@ -59,10 +59,11 @@ user explicitly asks for something minimal.
 
 ## Gateways
 
-`gateways.list` shows what's connected. Starting a **new** OAuth connection (Slack, Gmail,
-etc.) needs a browser callback, so it isn't exposed over MCP — if the agent needs a platform,
-tell the user to connect it in the Oya web app at `https://oya.ai/chat/<agent_id>`, then
-re-check with `gateways.list`. Don't fake a connection.
+`gateways.list` shows what's connected. To connect a **new** platform, call `gateways.connect`
+(`agent_id` + `platform`) — OAuth needs a browser callback, so it returns an `install_url` for
+the user to open and authorize; then re-check with `gateways.list`. If the user already connected
+that platform elsewhere, pass a `connection_id` from `gateways.list_connections` to reuse it with
+no browser step. Don't fake a connection.
 
 Surface any tool error verbatim (it carries a domain code like `not_found` / `forbidden`) and
 stop rather than guessing.

@@ -40,6 +40,7 @@ Follow the README in the matching folder above.
 - **templates** — list, get, deploy, apply, create, update, fork, delete
 - **routines** — list, create, update, trigger, delete
 - **accounts** (agency) — whoami, list/create/delete customer sub-accounts
+- **gateways** — list, list_connections, connect (returns a browser install URL to authorize a platform, or reuses an existing connection)
 - **projects**, **knowledge_base**, **triggers**, **organizations**, **api_keys** — list/create and related
 
 (The interactive agent *build* flow - the Oya Engineer - stays in the Oya web app; these

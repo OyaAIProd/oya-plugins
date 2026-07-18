@@ -36,7 +36,8 @@ domain code (`not_found`, `forbidden`, ...) — surface it and stop rather than 
   `knowledge_base.upload`, `knowledge_base.assign_entry`, `knowledge_base.unassign_entry`,
   `knowledge_base.list_entries`, `knowledge_base.list_agent_knowledge`,
   `knowledge_base.delete_entry`
-- **Gateways (read)** — `gateways.list`, `gateways.list_connections`
+- **Gateways** — `gateways.list`, `gateways.list_connections` (read), and `gateways.connect`
+  (returns a browser install URL to authorize a platform, or reuses an existing connection by id)
 - **Accounts (agency)** — `accounts.whoami`, `accounts.list` (customer sub-accounts),
   `accounts.create`, `accounts.delete`
 - **Projects / organizations / api_keys** — `*.list` / `*.create` / `*.get` and related.
@@ -100,9 +101,10 @@ is the result, imports auto-install on deploy, and secrets are env vars.
 Keyless LLM option in any script: call `oya_runtime.llm(messages)` in the sandbox instead of a
 provider SDK.
 
-## Limits
+## Connecting gateways
 
-`gateways.list` / `gateways.list_connections` show what's connected, but **starting a new**
-gateway OAuth connection (Slack, Gmail, etc.) needs a browser callback, so it isn't exposed over
-MCP — direct the user to the Oya web app to connect a platform, then re-check with
-`gateways.list`. Don't fake a connection.
+`gateways.list` / `gateways.list_connections` show what's connected. To connect a new platform,
+call `gateways.connect` (agent_id + platform). Since OAuth needs a browser callback, it returns an
+`install_url` — give it to the user to open and authorize, then re-check with `gateways.list`. If
+the user already connected that platform on another agent, pass a `connection_id` from
+`gateways.list_connections` to reuse it instantly (no browser). Don't fake a connection.

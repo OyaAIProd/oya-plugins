@@ -237,6 +237,20 @@ export const OyaPlugin: Plugin = async () => {
           return await callTool("gateways.list", { agent_id: args.agent_id });
         },
       }),
+      oya_gateway_connect: tool({
+        description:
+          "Connect a platform gateway (slack, gmail, jira, ...) to an Oya agent. Returns a browser install_url the user opens to authorize (OAuth needs a browser); then call oya_gateways_list to confirm. Pass connection_id (from oya_gateways_list_connections) to reuse an existing connection with no browser step.",
+        args: {
+          agent_id: tool.schema.string(),
+          platform: tool.schema.string(),
+          connection_id: tool.schema.string().optional(),
+        },
+        async execute(args) {
+          const payload: Record<string, unknown> = { agent_id: args.agent_id, platform: args.platform };
+          if (args.connection_id) payload.connection_id = args.connection_id;
+          return await callTool("gateways.connect", payload);
+        },
+      }),
       oya_routines_list: tool({
         description: "List an Oya agent's scheduled routines.",
         args: { agent_id: tool.schema.string() },
